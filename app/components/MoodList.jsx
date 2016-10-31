@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { newUserMood } from '../reducers/mood-reducer'
+import { setCurrentUser } from '../reducers/user-reducer'
 import { Link } from 'react-router'
 import axios from 'axios'
+import store from '../store'
+
 
 export default class MoodList extends React.Component {
   constructor(props) {
@@ -17,6 +19,7 @@ export default class MoodList extends React.Component {
   }
 
   render() {
+    const {currentUser} = this.props
     return (
       <div className="well">
         <form className="form-horizontal" onSubmit={this.onFormSubmit}>
@@ -65,7 +68,7 @@ export default class MoodList extends React.Component {
 
           <div className="form-group">
               <div className="col-xs-8 col-xs-offset-11">
-                <Link to='users/:userName'><button
+                <Link to='users'><button
                   type="submit"
                   className="btn btn-success">Next</button></Link>
               </div>
@@ -87,7 +90,7 @@ export default class MoodList extends React.Component {
         picUrl: moodInfo.picUrl
       })
      })
-      .then(res => res.json())
+      .then(store.dispatch(setCurrentUser(moodInfo)))
       .catch(err => console.error(err))
 
     .then(res => console.log('finished posting'))
