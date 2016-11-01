@@ -20,6 +20,7 @@ export default class MoodList extends React.Component {
 
   render() {
     const {currentUser} = this.props
+    console.log('currentUser', currentUser)
     return (
       <div className="well">
         <form className="form-horizontal" onSubmit={this.onFormSubmit}>
@@ -68,7 +69,7 @@ export default class MoodList extends React.Component {
 
           <div className="form-group">
               <div className="col-xs-8 col-xs-offset-11">
-                <Link to='users'><button
+                <Link to='/moods'><button
                   type="submit"
                   className="btn btn-success">Next</button></Link>
               </div>
@@ -90,7 +91,7 @@ export default class MoodList extends React.Component {
         picUrl: moodInfo.picUrl
       })
      })
-      .then(store.dispatch(setCurrentUser(moodInfo)))
+      .then(()=> store.dispatch(setCurrentUser(moodInfo)))
       .catch(err => console.error(err))
 
     .then(res => console.log('finished posting'))
@@ -109,13 +110,10 @@ export default class MoodList extends React.Component {
   }
 }
 
-const mapState = ({currentUser}) => ({currentUser})
-// const mapDispatch = dispatch => ({
-//   loadUserMood: (moodInfo) => {
-//     console.log('mapDispatch', state)
-//   }
-// })
-// mapDispatch takes in dispatch and return an object
+const mapState = (user) => {
+  return {
+    currentUser: user.currentUser}
+  }
 
 export const MoodContainer = connect(mapState, null)(MoodList)
 

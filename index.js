@@ -8,7 +8,7 @@ const nameError =
 
  The package name
 
-    ${pkg.enrichment}
+    ${pkg.name}
 
 isn't valid. If you don't change it, things won't work right.
 
@@ -17,7 +17,7 @@ Please change it in ${__dirname}/package.json
 ********************************************************************`
 
 const reasonableName = /^[\w\-]+$/
-if (!reasonableName.test(pkg.enrichment)) {
+if (!reasonableName.test(pkg.name)) {
   console.error(chalk.red(nameError))
 }
 

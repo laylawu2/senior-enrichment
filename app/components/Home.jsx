@@ -46,7 +46,7 @@ export default class Home extends Component {
               </div>
             </div>
             <div className="form-group">
-              <div className="col-xs-8 col-xs-offset-2">
+              <div className="col-xs-8 col-xs-offset-5">
                 <button
                   type="submit"
                   className="btn btn-info">Submit</button>
