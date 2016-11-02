@@ -1,8 +1,5 @@
 import { combineReducers } from 'redux'
-import userReducer from './user-reducer'
-import moodReducer from './mood-reducer'
-
-export default combineReducers({
-  user: userReducer,
-  mood: moodReducer
-})
+import users from './user-reducer'
+import moods from './mood-reducer'
+import currentUser from './current-user-reducer'
+export default combineReducers({users, currentUser, moods})

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 
-const initialState = {}
+const initialState = {
+  moods: []
+}
 
 export default function(state = initialState, action) {
   switch(action.type) {

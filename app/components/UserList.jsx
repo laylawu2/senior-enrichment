@@ -2,6 +2,7 @@ import React from 'react';
 import { updateUsers, loadUsers} from '../reducers/user-reducer'
 import store from '../store'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 export default class UserList extends React.Component {
   constructor(props) {
     super(props)
@@ -11,7 +12,7 @@ export default class UserList extends React.Component {
 
   render() {
     const {users} = this.props
-
+    console.log('this.props', this.props.users)
     return (
       <div className="well">
         <form onSubmit={this.onFormSubmit}>
@@ -31,13 +32,16 @@ export default class UserList extends React.Component {
                     className="btn btn-info">Add
                 </button>
               </div>
-          </div>
 
+          </div>
+           <div className="form-group">
+              {users&&users.map((user,i) => (
+                <Link to={`/users/${user.id}`}><div className='text-center'key={i}>{user.name}</div></Link>
+              ))}
+
+            </div>
           </fieldset>
         </form>
-        <div className="col-xs-8">
-        {/*show a list of all users here*/}
-        </div>
       </div>
     )
   }
@@ -58,9 +62,7 @@ export default class UserList extends React.Component {
     .then(res => console.log('finished posting'))
   }
 
-  afterSubmit(e) {
 
-  }
 
   onFormSubmit(e){
     e.preventDefault();
@@ -73,8 +75,9 @@ export default class UserList extends React.Component {
   }
 }
 
-const mapState = (user) => {
-  return {users: user.users}
+const mapState = (state) => {
+  console.log('user.users in mapState', state.users)
+  return {users: state.users}
 }
 
 

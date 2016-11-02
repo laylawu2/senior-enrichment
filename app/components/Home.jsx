@@ -58,6 +58,9 @@ export default class Home extends Component {
       </div>
     )
   }
+
+
+
   onFormSubmit(e){
     console.log('this.props', this.props)
     const { loadUserMood } = this.props
@@ -75,7 +78,7 @@ export default class Home extends Component {
 const mapState = ({currentUser}) => ({currentUser})
 const mapDispatch = dispatch => ({
   loadUserMood: (moodInfo) => {
-    console.log('mapDispatch', state)
+    dispatch(setUserMood(moodInfo))
   }
 })
 // mapDispatch takes in dispatch and return an object
