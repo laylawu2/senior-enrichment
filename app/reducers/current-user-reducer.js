@@ -22,3 +22,4 @@ export const setUserMood = (moodInfo) => ({
   type: SET_USER_MOOD,
   moodInfo
 })
+

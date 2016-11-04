@@ -23,8 +23,6 @@ export const updateUsers = (userInfo) => ({
 })
 
 export const sendUsers = (users) => {
-
-  console.log('user from db', users)
   return {
     type: SEND_USERS,
     users: users
